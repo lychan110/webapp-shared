@@ -1,0 +1,99 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Studio Base Styles — Tailwind CSS v4
+   ══════════════════════════════════════════════════════════════════════════
+   Core styles applied to the document root. Import AFTER tokens.css.
+
+   Usage (import fonts first!):
+     @import "@lenya/webapp-shared/styles/fonts.css";
+     @import "tailwindcss";
+     @import "@lenya/webapp-shared/styles/tokens.css";
+     @import "@lenya/webapp-shared/styles/base.css";
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@layer base {
+
+  /* ─── Root defaults ───────────────────────────────────────────────── */
+  html {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  /* ─── Focus ring ──────────────────────────────────────────────────── */
+  *:focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ─── Scrollbar ───────────────────────────────────────────────────── */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-paper-soft);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-muted);
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  /* ─── Blob (decorative background elements) ───────────────────────── */
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .blob-purple {
+    background: var(--color-blob-purple);
+  }
+
+  .blob-teal {
+    background: var(--color-blob-teal);
+  }
+
+  .blob-pink {
+    background: var(--color-blob-pink);
+  }
+
+  /* ─── Glass card effect ───────────────────────────────────────────── */
+  .glass {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid color-mix(in srgb, var(--color-ink-soft) 10%, transparent);
+    transition: all 0.3s ease;
+  }
+
+  .glass:hover {
+    border-color: color-mix(in srgb, var(--color-ink-soft) 20%, transparent);
+    transform: translateY(-2px);
+  }
+
+  /* ─── Line clamp ──────────────────────────────────────────────────── */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

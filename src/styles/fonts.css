@@ -1,0 +1,14 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Studio Fonts — Google Fonts imports
+   ══════════════════════════════════════════════════════════════════════════
+   Separate file so consuming apps can import fonts first (CSS spec requires
+   all @import statements to precede any other rules).
+
+   Usage (in consuming app's entry CSS):
+     @import "@lenya/webapp-shared/styles/fonts.css";
+     @import "tailwindcss";
+     @import "@lenya/webapp-shared/styles/tokens.css";
+     @import "@lenya/webapp-shared/styles/base.css";
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap");
