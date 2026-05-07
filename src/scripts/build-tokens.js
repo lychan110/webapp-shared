@@ -25,26 +25,29 @@ function parseTokens(source) {
   const radius = {};
   const shadows = {};
 
-  // Extract colors
-  const colorsMatch = source.match(/colors:\s*\{([^}]+)\}/s);
+  // Extract colors — match nested objects properly
+  const colorsMatch = source.match(/colors:\s*\{([\s\S]*?)\n\}/);
   if (colorsMatch) {
-    const colorEntries = colorsMatch[1].matchAll(/(\S[^:]+):\s*\{[^}]*?(light:\s*'([^']+)')?[^}]*?(dark:\s*'([^']+)')?[^}]*?\}/gs);
-    for (const match of colorEntries) {
-      const name = match[1].trim().replace(/['"]/g, '');
-      colors[name] = {
-        light: match[3] || '#000000',
-        dark: match[4] || '#000000',
+    const block = colorsMatch[1];
+    const entryRegex = /['"]?([\w-]+)['"]?\s*:\s*\{\s*light:\s*'([^']*)'\s*,\s*dark:\s*'([^']*)'\s*\}/g;
+    let match;
+    while ((match = entryRegex.exec(block)) !== null) {
+      colors[match[1]] = {
+        light: match[2] || '#000000',
+        dark: match[3] || '#000000',
       };
     }
   }
 
   // Extract fonts
-  const fontsMatch = source.match(/fonts:\s*\{([^}]+)\}/s);
+  const fontsMatch = source.match(/fonts:\s*\{([\s\S]*?)\n\}/);
   if (fontsMatch) {
-    const fontEntries = fontsMatch[1].matchAll(/(\w+):\s*(\[[^\]]+\])/gs);
-    for (const match of fontEntries) {
+    const block = fontsMatch[1];
+    const fontRegex = /(\w+):\s*\[([^\]]+)\]/g;
+    let match;
+    while ((match = fontRegex.exec(block)) !== null) {
       try {
-        fonts[match[1]] = JSON.parse(match[2].replace(/'/g, '"'));
+        fonts[match[1]] = JSON.parse('[' + match[2].replace(/'/g, '"') + ']');
       } catch { /* skip */ }
     }
   }
@@ -59,19 +62,23 @@ function parseTokens(source) {
   }
 
   // Extract radius
-  const radiusMatch = source.match(/radius:\s*\{([^}]+)\}/s);
+  const radiusMatch = source.match(/radius:\s*\{([\s\S]*?)\n\}/);
   if (radiusMatch) {
-    const radiusEntries = radiusMatch[1].matchAll(/(\w+):\s*'([^']+)'/gs);
-    for (const match of radiusEntries) {
+    const block = radiusMatch[1];
+    const radiusRegex = /(\w+):\s*'([^']+)'/g;
+    let match;
+    while ((match = radiusRegex.exec(block)) !== null) {
       radius[match[1]] = match[2];
     }
   }
 
   // Extract shadows
-  const shadowsMatch = source.match(/shadows:\s*\{([^}]+)\}/s);
+  const shadowsMatch = source.match(/shadows:\s*\{([\s\S]*?)\n\}/);
   if (shadowsMatch) {
-    const shadowEntries = shadowsMatch[1].matchAll(/(\w+):\s*'([^']+)'/gs);
-    for (const match of shadowEntries) {
+    const block = shadowsMatch[1];
+    const shadowRegex = /(\w+):\s*'([^']+)'/g;
+    let match;
+    while ((match = shadowRegex.exec(block)) !== null) {
       shadows[match[1]] = match[2];
     }
   }
@@ -81,6 +88,9 @@ function parseTokens(source) {
 
 function generateCSSVars(tokens, mode) {
   const { colors } = tokens;
+  if (!colors || Object.keys(colors).length === 0) {
+    return '  /* No color tokens parsed */';
+  }
   const vars = [];
 
   for (const [name, value] of Object.entries(colors)) {
@@ -102,40 +112,42 @@ function hexToRgb(hex) {
   } : { r: 0, g: 0, b: 0 };
 }
 
-// ─── Main ────────────────────────────────────────────────────────────────
+// --- Main ----------------------------------------------------------------
 
 try {
   const source = readFileSync(SRC_TOKENS, 'utf-8');
   const tokens = parseTokens(source);
 
   // Generate CSS variables for consumers without Tailwind v4
-  const css = `/* ══════════════════════════════════════════════════════════════════════════
-   Studio Design Tokens — CSS Variables
-   Auto-generated from src/tokens/tokens.ts. Do not edit directly.
-   ══════════════════════════════════════════════════════════════════════════ */
-
-:root {
-  /* ─── Light mode ─────────────────────────────────────────────── */
-${generateCSSVars(tokens, 'light')}
-}
-
-.dark {
-${generateCSSVars(tokens, 'dark')}
-}
-`;
+  const css = [
+    '/* ══════════════════════════════════════════════════════════════════════════',
+    '   Studio Design Tokens — CSS Variables',
+    '   Auto-generated from src/tokens/tokens.ts. Do not edit directly.',
+    '   ══════════════════════════════════════════════════════════════════════════ */',
+    '',
+    ':root {',
+    '  /* --- Light mode -------------------------------------------------- */',
+    generateCSSVars(tokens, 'light'),
+    '}',
+    '',
+    '.dark {',
+    generateCSSVars(tokens, 'dark'),
+    '}',
+    '',
+  ].join('\n');
 
   const cssPath = resolve(ROOT, 'src/styles/tokens-generated.css');
   writeFileSync(cssPath, css);
-  console.log(`✅ Generated ${cssPath}`);
+  console.log('Generated ' + cssPath);
 
   // Generate JSON
   const jsonPath = resolve(ROOT, 'dist/tokens.json');
   const distDir = resolve(ROOT, 'dist');
   if (!existsSync(distDir)) mkdirSync(distDir, { recursive: true });
   writeFileSync(jsonPath, JSON.stringify(tokens, null, 2));
-  console.log(`✅ Generated ${jsonPath}`);
+  console.log('Generated ' + jsonPath);
 
 } catch (err) {
-  console.error('❌ Error:', err.message);
+  console.error('Error:', err.message);
   process.exit(1);
 }
