@@ -4,10 +4,72 @@
    ══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ─── Light mode ─────────────────────────────────────────────── */
-
+  /* --- Light mode -------------------------------------------------- */
+  --c-ink: 30 30 46;
+  --color-ink: #1E1E2E;
+  --c-ink-soft: 74 74 90;
+  --color-ink-soft: #4A4A5A;
+  --c-paper: 232 230 227;
+  --color-paper: #E8E6E3;
+  --c-paper-deep: 216 214 211;
+  --color-paper-deep: #D8D6D3;
+  --c-paper-soft: 240 238 240;
+  --color-paper-soft: #F0EEF0;
+  --c-teal: 140 193 219;
+  --color-teal: #8CC1DB;
+  --c-teal-pale: 184 217 232;
+  --color-teal-pale: #B8D9E8;
+  --c-teal-deep: 90 155 181;
+  --color-teal-deep: #5A9BB5;
+  --c-coral: 224 122 95;
+  --color-coral: #E07A5F;
+  --c-ochre: 242 204 143;
+  --color-ochre: #F2CC8F;
+  --c-sage: 129 178 154;
+  --color-sage: #81B29A;
+  --c-rust: 188 108 74;
+  --color-rust: #BC6C4A;
+  --c-muted: 153 153 153;
+  --color-muted: #999999;
+  --c-status-success: 34 197 94;
+  --color-status-success: #22C55E;
+  --c-status-error: 239 68 68;
+  --color-status-error: #EF4444;
+  --c-status-warning: 245 158 11;
+  --color-status-warning: #F59E0B;
 }
 
 .dark {
-
+  --c-ink: 232 232 237;
+  --color-ink: #E8E8ED;
+  --c-ink-soft: 160 160 176;
+  --color-ink-soft: #A0A0B0;
+  --c-paper: 14 14 24;
+  --color-paper: #0E0E18;
+  --c-paper-deep: 26 26 36;
+  --color-paper-deep: #1A1A24;
+  --c-paper-soft: 22 22 32;
+  --color-paper-soft: #161620;
+  --c-teal: 75 196 176;
+  --color-teal: #4BC4B0;
+  --c-teal-pale: 110 212 196;
+  --color-teal-pale: #6ED4C4;
+  --c-teal-deep: 46 139 123;
+  --color-teal-deep: #2E8B7B;
+  --c-coral: 255 107 107;
+  --color-coral: #FF6B6B;
+  --c-ochre: 255 217 61;
+  --color-ochre: #FFD93D;
+  --c-sage: 149 213 178;
+  --color-sage: #95D5B2;
+  --c-rust: 224 122 95;
+  --color-rust: #E07A5F;
+  --c-muted: 102 102 102;
+  --color-muted: #666666;
+  --c-status-success: 75 196 176;
+  --color-status-success: #4BC4B0;
+  --c-status-error: 196 75 94;
+  --color-status-error: #C44B5E;
+  --c-status-warning: 255 217 61;
+  --color-status-warning: #FFD93D;
 }
