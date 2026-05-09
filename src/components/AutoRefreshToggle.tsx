@@ -8,6 +8,7 @@
      <AutoRefreshToggle on={autoRefresh} onToggle={setAutoRefresh} />
    ══════════════════════════════════════════════════════════════════════════ */
 
+import { RefreshCw } from 'lucide-react';
 import { cn } from '../utils/cn';
 
 export interface AutoRefreshToggleProps {
@@ -38,7 +39,7 @@ export function AutoRefreshToggle({
   const s = sizeMap[size];
 
   return (
-    <div className={cn('flex items-center gap-2', className)}>
+    <div className={cn('flex items-center gap-1.5', className)}>
       <button
         onClick={() => onToggle(!on)}
         className={`relative ${s.track} rounded-full transition-colors duration-200 ${
@@ -54,9 +55,8 @@ export function AutoRefreshToggle({
           }`}
         />
       </button>
-      <span
-        className={`${s.label} text-ink-soft dark:text-white/50 min-w-[6ch] tabular-nums`}
-      >
+      <span className={`flex items-center gap-1 ${s.label} text-ink-soft dark:text-white/50 min-w-[6ch] tabular-nums`}>
+        {on && <RefreshCw className={`${size === 'sm' ? 'w-2.5 h-2.5' : 'w-3 h-3'} text-teal/70 animate-[spin_2s_linear_infinite]`} />}
         {on ? intervalLabel : 'off'}
       </span>
     </div>

@@ -78,8 +78,9 @@
   }
 
   .glass:hover {
-    border-color: color-mix(in srgb, var(--color-ink-soft) 20%, transparent);
-    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-ink-soft) 25%, transparent);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
   }
 
   /* ─── Line clamp ──────────────────────────────────────────────────── */
