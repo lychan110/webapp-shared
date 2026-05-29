@@ -22,6 +22,9 @@ export { sleep } from './utils/sleep';
 export { slugify } from './utils/slugify';
 export { downloadFile, downloadJSON, downloadCSV } from './utils/download';
 export { todaySlug } from './utils/today-slug';
+export { createEventHub } from './utils/event-hub';
+export { createWSClient } from './utils/ws-client';
+export type { WSClient, WSClientOptions, WSClientEventMap, WSData } from './utils/ws-client';
 
 /* ─── Hooks ────────────────────────────────────────────────────────── */
 export { useLocalStorage } from './hooks/useLocalStorage';

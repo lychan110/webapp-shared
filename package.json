@@ -11,6 +11,7 @@
     "./components/*": "./src/components/*.tsx",
     "./hooks/*": "./src/hooks/*.ts",
     "./utils/*": "./src/utils/*.ts",
+    "./server/*": "./src/server/*.ts",
     "./tokens": "./src/tokens/tokens.ts"
   },
   "dependencies": {
@@ -22,6 +23,8 @@
   "peerDependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "chokidar": "^3.6.0 || ^4.0.0",
+    "express": "^4.21.0 || ^5.0.0",
     "react": "^18.2.0 || ^19.0.0",
     "react-dom": "^18.2.0 || ^19.0.0"
   },
@@ -31,12 +34,21 @@
     },
     "@radix-ui/react-tooltip": {
       "optional": true
+    },
+    "chokidar": {
+      "optional": true
+    },
+    "express": {
+      "optional": true
     }
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^25.9.1",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
+    "chokidar": "^4.0.0",
+    "express": "^5.2.1",
     "typescript": "^5.3.3"
   }
 }
