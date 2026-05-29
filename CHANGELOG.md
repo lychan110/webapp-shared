@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.4.0] — 2026-05-29
+
+### Added
+- **12 utilities**: sleep, slugify, download (file/JSON/CSV), todaySlug, toBase64Url, resolvePath, isWithinDirs, request (typed fetch), detectLanguage, fetchWithBackoff, diff (LCS), email-deobfuscate, readConfigKey
+- **9 new components**: Profile, Toggle, Field, Toast, Input, Icon (40+ SVG icons), StatusPill, ErrorBanner, TypingDots, SegmentControl, PageHeader, FilterableLedger, Tree
+- **4 new hooks**: useScrollFade, useWebSocket, useFileImport, useControllableState
+- **8 server-side patterns**: config-router, watcher-manager, resolve-interpreter, fs-tree, event-hub, ws-client, runtime-settings, crypto (AES-256-GCM)
+- **Platform identity tokens**: platform definitions and colors from Chimera
+- **CSS additions**: blob-drift animations, prefers-reduced-motion, scrollbar-hide utility
+- **Tests**: Vitest with 40 passing tests across 5 test suites
+- npm scripts: `test`, `test:watch`, `lint`, `build-tokens`
+- Enhanced EmptyState component (compact variant, secondaryAction, imageUrl)
+
+### Fixed
+- `build-tokens.js`: regex and font parser now correctly handle current tokens.ts format
+- `@custom-variant dark` changed from `:where()` to `:is()` for correct specificity
+- Animation keyframes renamed to kebab-case for Tailwind v4 compatibility
+- Unused `ReactNode` import removed from Profile component
+
+### Changed
+- Package version from 0.2.0 → 0.4.0
+- Package is now public (not private)
+- `.gitignore` hardened for public repo (blocks env files, secrets, certs)
+- Server-only utilities separated into `./server/*` export path
+
 ## [0.2.0] — 2026-05-07
 
 ### Added
@@ -11,16 +36,11 @@
 - Font imports (`fonts.css`): Cormorant Garamond, Lato, JetBrains Mono, Caveat
 - `cn()` utility (clsx + tailwind-merge)
 - `build-tokens.js` script to generate CSS variables and JSON from TS tokens
-- This CHANGELOG
 
 ### Fixed
-- `build-tokens.js`: regex parsing now handles nested token objects (was using `[^}]+` which broke on braces)
-- `build-tokens.js`: corrupted source path (`SRC_TOKENS=***`) replaced with proper `resolve()` call
+- `build-tokens.js`: regex parsing now handles nested token objects
+- `build-tokens.js`: corrupted source path replaced with proper `resolve()` call
 - Token generation now produces correct CSS variables for both light and dark modes
-
-### Changed
-- Package version from 0.1.0 → 0.2.0
-- Full design token pipeline: `tokens.ts` is the single source of truth, `tokens.css` and `tokens-generated.css` are derived
 
 ## [0.1.0] — 2026-05-06
 
