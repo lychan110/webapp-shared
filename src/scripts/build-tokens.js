@@ -26,7 +26,7 @@ function parseTokens(source) {
   const shadows = {};
 
   // Extract colors — match nested objects properly
-  const colorsMatch = source.match(/colors:\s*\{([\s\S]*?)\n\}/);
+  const colorsMatch = source.match(/colors:\s*\{([\s\S]*?)\n\s*\}/);
   if (colorsMatch) {
     const block = colorsMatch[1];
     const entryRegex = /['"]?([\w-]+)['"]?\s*:\s*\{\s*light:\s*'([^']*)'\s*,\s*dark:\s*'([^']*)'\s*\}/g;
@@ -40,15 +40,16 @@ function parseTokens(source) {
   }
 
   // Extract fonts
-  const fontsMatch = source.match(/fonts:\s*\{([\s\S]*?)\n\}/);
+  const fontsMatch = source.match(/fonts:\s*\{([\s\S]*?)\n\s*\}/);
   if (fontsMatch) {
     const block = fontsMatch[1];
     const fontRegex = /(\w+):\s*\[([^\]]+)\]/g;
     let match;
     while ((match = fontRegex.exec(block)) !== null) {
-      try {
-        fonts[match[1]] = JSON.parse('[' + match[2].replace(/'/g, '"') + ']');
-      } catch { /* skip */ }
+      fonts[match[1]] = match[2].split(',').map(s => {
+        const trimmed = s.trim();
+        return trimmed.replace(/^'(.*)'$/, '$1');
+      });
     }
   }
 
@@ -62,7 +63,7 @@ function parseTokens(source) {
   }
 
   // Extract radius
-  const radiusMatch = source.match(/radius:\s*\{([\s\S]*?)\n\}/);
+  const radiusMatch = source.match(/radius:\s*\{([\s\S]*?)\n\s*\}/);
   if (radiusMatch) {
     const block = radiusMatch[1];
     const radiusRegex = /(\w+):\s*'([^']+)'/g;
@@ -73,7 +74,7 @@ function parseTokens(source) {
   }
 
   // Extract shadows
-  const shadowsMatch = source.match(/shadows:\s*\{([\s\S]*?)\n\}/);
+  const shadowsMatch = source.match(/shadows:\s*\{([\s\S]*?)\n\s*\}/);
   if (shadowsMatch) {
     const block = shadowsMatch[1];
     const shadowRegex = /(\w+):\s*'([^']+)'/g;
