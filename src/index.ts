@@ -59,8 +59,23 @@ export { AutoRefreshToggle } from './components/AutoRefreshToggle';
 export type { AutoRefreshToggleProps } from './components/AutoRefreshToggle';
 export { Skeleton } from './components/Skeleton';
 export type { SkeletonProps } from './components/Skeleton';
-export { EmptyState } from './components/EmptyState';
+export { SegmentControl } from './components/SegmentControl';
+export type { SegmentOption, SegmentControlProps } from './components/SegmentControl';
+
+export { PageHeader } from './components/PageHeader';
+export type { PageHeaderProps } from './components/PageHeader';
+
+export { EmptyState, emptyStateVariants } from './components/EmptyState';
 export type { EmptyStateProps, EmptyStateAction } from './components/EmptyState';
+
+export { FilterableLedger } from './components/FilterableLedger';
+export type {
+  LedgerColumn,
+  FilterableLedgerProps,
+} from './components/FilterableLedger';
+
+export { Tree } from './components/Tree';
+export type { TreeNode, TreeProps } from './components/Tree';
 export { Profile } from './components/Profile';
 export type { ProfileProps } from './components/Profile';
 export { Toggle, toggleVariants, toggleThumbVariants } from './components/Toggle';
@@ -71,3 +86,11 @@ export { Toast, ToastProvider, useToast, toastVariants } from './components/Toas
 export type { ToastProps } from './components/Toast';
 export { Input, inputVariants } from './components/Input';
 export type { InputProps } from './components/Input';
+export { Icon } from './components/Icon';
+export type { IconName, IconProps } from './components/Icon';
+export { StatusPill, statusPillVariants, statusToVariant } from './components/StatusPill';
+export type { StatusPillProps } from './components/StatusPill';
+export { ErrorBanner } from './components/ErrorBanner';
+export type { ErrorBannerProps } from './components/ErrorBanner';
+export { TypingDots } from './components/TypingDots';
+export type { TypingDotsProps } from './components/TypingDots';
