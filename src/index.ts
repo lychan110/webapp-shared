@@ -6,6 +6,26 @@
 export { tokens } from './tokens/tokens';
 export type { StudioToken, ThemeMode, ColorKey } from './tokens/tokens';
 
+/* ─── Platform identity tokens ────────────────────────────────────── */
+export {
+  PLATFORMS,
+  PLATFORM_LIST,
+  getPlatform,
+  platformColor,
+} from './tokens/platforms';
+export type {
+  PlatformDefinition,
+  PlatformFeatures,
+  PlatformId,
+} from './tokens/platforms';
+
+export {
+  PLATFORM_COLORS,
+  PLATFORM_COLOR_VARS,
+  PLATFORM_COLOR_VAR_DEFAULT,
+  platformColorVar,
+} from './tokens/platform-colors';
+
 /* ─── Utils ────────────────────────────────────────────────────────── */
 export { cn } from './utils/cn';
 export { toBase64Url } from './utils/base64';
