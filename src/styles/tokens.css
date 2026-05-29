@@ -74,7 +74,7 @@
 @custom-variant light (&:where(.light, .light *));
 
 /* Dark mode (default — applied via .dark class or system preference) */
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:is(.dark, .dark *));
 
 /* ─── Keyframes ─────────────────────────────────────────────────────────── */
 
