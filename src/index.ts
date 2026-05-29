@@ -8,6 +8,16 @@ export type { StudioToken, ThemeMode, ColorKey } from './tokens/tokens';
 
 /* ─── Utils ────────────────────────────────────────────────────────── */
 export { cn } from './utils/cn';
+export { toBase64Url } from './utils/base64';
+export { resolvePath } from './utils/resolve-path';
+export { isWithinDirs } from './utils/is-within-dirs';
+export { req } from './utils/request';
+export { detectLanguage } from './utils/detect-language';
+export { fetchWithBackoff } from './utils/fetch-with-backoff';
+export { diffLines, withContext, countChanges } from './utils/diff';
+export type { DiffLine, HunkLine } from './utils/diff';
+export { deobfuscateEmail } from './utils/email-deobfuscate';
+export { readConfigKey } from './utils/read-config-key';
 export { sleep } from './utils/sleep';
 export { slugify } from './utils/slugify';
 export { downloadFile, downloadJSON, downloadCSV } from './utils/download';
