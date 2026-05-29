@@ -31,6 +31,10 @@ export { useHealthCheck } from './hooks/useHealthCheck';
 export type { HealthStatus } from './hooks/useHealthCheck';
 export { useOnClickOutside } from './hooks/useOnClickOutside';
 export { useKeyboard } from './hooks/useKeyboard';
+export { useScrollFade } from './hooks/useScrollFade';
+export { useWebSocket } from './hooks/useWebSocket';
+export { useFileImport } from './hooks/useFileImport';
+export { useControllableState } from './hooks/useControllableState';
 
 /* ─── Providers ────────────────────────────────────────────────────── */
 export { ThemeProvider, useTheme } from './providers/ThemeProvider';
