@@ -8,6 +8,10 @@ export type { StudioToken, ThemeMode, ColorKey } from './tokens/tokens';
 
 /* ─── Utils ────────────────────────────────────────────────────────── */
 export { cn } from './utils/cn';
+export { sleep } from './utils/sleep';
+export { slugify } from './utils/slugify';
+export { downloadFile, downloadJSON, downloadCSV } from './utils/download';
+export { todaySlug } from './utils/today-slug';
 
 /* ─── Hooks ────────────────────────────────────────────────────────── */
 export { useLocalStorage } from './hooks/useLocalStorage';
