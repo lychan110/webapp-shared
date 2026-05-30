@@ -99,7 +99,7 @@ export function createWSClient(options: WSClientOptions): WSClient {
   let destroyed = false;
   let reconnectTimer: ReturnType<typeof setTimeout> | null = null;
   let healthCheckTimer: ReturnType<typeof setInterval> | null = null;
-  let _readyState = WebSocket.CLOSED;
+  let _readyState: number = WebSocket.CLOSED;
 
   const messageQueue: WSData[] = [];
   const listeners = new Map<string, Set<(...args: unknown[]) => void>>();
