@@ -8,16 +8,16 @@
  * Type-safe: pass the same type parameter for all sources.
  *
  * @param key     - The `sessionStorage` key (and conventionally the Vite env var name).
- * @param envKey  - The `import.meta.env` key to check (e.g. `'VITE_OPENAI_API_KEY'`).
+ * @param envKey  - The `import.meta.env` key to check (e.g. `'OPENAI_API_KEY'`).
  * @param fallback - Fallback value used when neither source is available.
  * @returns The resolved value.
  *
  * @example
- * const apiKey = readConfigKey('my_api_key', 'VITE_MY_API_KEY', 'default-key');
+ * const apiKey = readConfigKey('my_api_key', 'OPENAI_API_KEY', 'default-key');
  *
  * @example
  * // With explicit number type:
- * const port = readConfigKey<number>('my_port', 'VITE_MY_PORT', 8080);
+ * const port = readConfigKey<number>('my_port', 'MY_PORT', 8080);
  */
 export function readConfigKey<T = string>(
   key: string,
