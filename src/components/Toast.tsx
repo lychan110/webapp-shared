@@ -12,7 +12,7 @@ import { cn } from '../utils/cn';
 /* ─── Variants ────────────────────────────────────────────────────────── */
 
 export const toastVariants = cva(
-  'fixed bottom-6 right-6 z-50 px-4 py-2.5 rounded-xl text-sm font-medium shadow-xl border backdrop-blur-sm animate-fade-up max-w-xs',
+  'fixed bottom-6 right-6 z-50 px-4 py-2.5 rounded-xl text-sm font-medium shadow-xl border backdrop-blur-sm animate-fade-up max-w-xs break-words',
   {
     variants: {
       variant: {

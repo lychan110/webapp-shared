@@ -164,7 +164,7 @@ export function ModalContent({ children, className }: ModalContentProps) {
       <div
         ref={contentRef}
         className={cn(
-          'relative z-10 w-full max-w-md mx-4 max-h-[85vh] overflow-y-auto',
+          'relative z-10 w-full max-w-md mx-4 max-h-[85vh] overflow-x-hidden overflow-y-auto',
           'bg-paper-deep dark:bg-paper-deep border border-ink-soft/10 dark:border-white/10',
           'rounded-xl shadow-xl',
           'animate-fade-in',

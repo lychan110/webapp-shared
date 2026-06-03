@@ -13,7 +13,7 @@
 |-----|------|-----------------------|-------------|
 | rolodex | React+Vite+Express | ✅ Yes | ~25 files |
 | brain-bound | React+Vite+Fastify (monorepo) | ❌ No | ~94 files |
-| chimera | React+Vite+Express (pnpm) | ❌ No | ~60 files |
+| chimera | React+Vite+Express (pnpm), Chakra UI v3 | ❌ No | ~60 files |
 | contact-scout | React+Vite (static) | ❌ No | ~4 files |
 | rsvp-automation | React+Vite (inviteflow) | ❌ No | ~50 files |
 | lychan110.github.io | Astro+React | ❌ No | ~31 files |
@@ -658,10 +658,11 @@ Platform definitions (Discord, Telegram, WhatsApp, etc.) with glyphs, color toke
 
 **Apps to migrate:**
 - brain-bound (currently Tailwind v3 → upgrade to v4)
-- chimera (currently Tailwind v3 → upgrade to v4)
 - contact-scout (currently inline styles only → add Tailwind v4 + shared)
 - rsvp-automation (currently Tailwind v4 but custom tokens → merge with shared)
 - lychan110.github.io (Astro with Tailwind v3 — different setup, lower priority)
+
+**Chimera (EXCLUDED):** Pure Chakra UI v3 — no Tailwind dependency. Migrating to Tailwind would be a full UI rewrite for zero gain. Chimera already contributed components (Icon, Toggle, TypingDots, ErrorBanner, StatusPill) and server patterns (event-hub, ws-client) to shared. It gets githooks and can consume shared utilities, but does NOT need a Tailwind migration.
 
 ### Task 5.3: Deduplicate ThemeProvider / ThemeContext
 
@@ -768,7 +769,7 @@ Document the extraction decisions, what moved where, and patterns to follow goin
 5. **Task 5.4** (contact-scout migration) — Pilot: migrate simplest app
 6. **Task 5.5** (rolodex cleanup) — Clean up existing consumer
 7. **Phase 4** (Server-side) — Extract server patterns
-8. **Phase 5** remaining — Migrate brain-bound, chimera, rsvp-automation
+8. **Phase 5** remaining — Migrate brain-bound, rsvp-automation (chimera excluded — pure Chakra UI, no Tailwind)
 9. **Phase 6** (Cross-cutting) — Tests, docs, CI
 
 ---

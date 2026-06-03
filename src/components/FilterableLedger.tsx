@@ -195,6 +195,7 @@ export function FilterableLedger<T>({
               <div
                 key={col.key}
                 className={cn(
+                  'min-w-0',
                   col.mobile === false && 'hidden md:block',
                   col.className,
                 )}
